@@ -18,7 +18,20 @@ Object.keys(_hello).forEach(function (key) {
   });
 });
 
-},{"./services/hello.world":2}],2:[function(require,module,exports){
+var _random = require("./services/random.generator");
+
+Object.keys(_random).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _random[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _random[key];
+    }
+  });
+});
+
+},{"./services/hello.world":2,"./services/random.generator":3}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28,6 +41,25 @@ exports.sayHello = sayHello;
 
 function sayHello() {
   return 'Shipday Dispatch Application';
+}
+
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAlphaNumericValue = getAlphaNumericValue;
+var ALPHA_NUMERIC_SEED = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function getAlphaNumericValue(length) {
+  var chars = [];
+
+  for (var i = 0; i < length; i++) {
+    chars.push(ALPHA_NUMERIC_SEED[Math.floor(Math.random() * ALPHA_NUMERIC_SEED.length)]);
+  }
+
+  return chars.join('');
 }
 
 },{}]},{},[1])(1)

@@ -1,8 +1,8 @@
 import {expect} from 'chai';
 import {sayHello} from '../main/app';
 
-describe("test suite", () => {
-    it("test case", () => {
+describe("sample test suite", () => {
+    it("sample test case", () => {
         expect(sayHello()).to.equal('Shipday Dispatch Application');
     });
 });
