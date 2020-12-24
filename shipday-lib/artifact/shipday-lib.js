@@ -31,7 +31,61 @@ Object.keys(_random).forEach(function (key) {
   });
 });
 
-},{"./services/hello.world":2,"./services/random.generator":3}],2:[function(require,module,exports){
+var _externalOrder = require("./services/external.order.form");
+
+Object.keys(_externalOrder).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _externalOrder[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _externalOrder[key];
+    }
+  });
+});
+
+},{"./services/external.order.form":2,"./services/hello.world":3,"./services/random.generator":4}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getMailSendingAjaxConfig = getMailSendingAjaxConfig;
+exports.getMailSendingWithoutSignatureAjaxConfig = getMailSendingWithoutSignatureAjaxConfig;
+exports.getCompanyInfoAjaxConfig = getCompanyInfoAjaxConfig;
+
+function getMailSendingAjaxConfig(data) {
+  var url = "/sendEmail";
+  return {
+    url: url,
+    type: 'POST',
+    data: data,
+    dataType: 'json',
+    async: false
+  };
+}
+
+function getMailSendingWithoutSignatureAjaxConfig(data) {
+  var url = "/sendEmailWithoutSignature";
+  return {
+    url: url,
+    type: 'POST',
+    data: data,
+    dataType: 'json',
+    async: false
+  };
+}
+
+function getCompanyInfoAjaxConfig(identificationNo) {
+  var url = "/getCompanyInfobyIdentificationNumber/" + identificationNo;
+  return {
+    url: url,
+    type: 'GET',
+    dataType: 'json'
+  };
+}
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43,7 +97,7 @@ function sayHello() {
   return 'Shipday Dispatch Application';
 }
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
